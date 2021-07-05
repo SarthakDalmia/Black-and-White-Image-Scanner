@@ -1,0 +1,396 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+Scanner.bin -- emu8086 assembler version: 4.08  
+ 
+[ 4/18/2021  --  3:59:50 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       #make_bin#
+[   2]        :                                       
+[   3]        :                                       #LOAD_SEGMENT=FFFFh#
+[   4]        :                                       #LOAD_OFFSET=0000h#
+[   5]        :                                       
+[   6]        :                                       #CS=0000h#
+[   7]        :                                       #IP=0000h#
+[   8]        :                                       
+[   9]        :                                       #DS=0000h#
+[  10]        :                                       #ES=0000h#
+[  11]        :                                       
+[  12]        :                                       #SS=0000h#
+[  13]        :                                       #SP=FFFEh#
+[  14]        :                                       
+[  15]        :                                       #AX=0000h#
+[  16]        :                                       #BX=0000h#
+[  17]        :                                       #CX=0000h#
+[  18]        :                                       #DX=0000h#
+[  19]        :                                       #SI=0000h#
+[  20]        :                                       #DI=0000h#
+[  21]        :                                       #BP=0000h#
+[  22]        :                                       
+[  23]        :                                       ; add your code here
+[  24]        :                                       SMOTOR1          EQU    88H
+[  25]        :                                       SMOTOR2          EQU    8AH
+[  26]        :                                       MUX_ADC         EQU    84H
+[  27]        :                                       ADCD                   EQU    80H
+[  28]        :                                       SIGNAL_ADC    EQU   8CH
+[  29]        :                                       
+[  30]        :                                       
+[  31]        :                                       
+[  32]        :                                       
+[  33]    0000: E9 FF 03                              jmp     st1
+[  34]        :                                       ;jmp st1 - takes 3 bytes followed by nop that is 4 bytes
+[  35]    0003: 90                                    nop
+[  36]        :                                       ;int 1 is not used so 1 x4 = 00004h - it is stored with 0
+[  37]    0004: 00 00                                 dw      0000
+[  38]    0006: 00 00                                 dw      0000
+[  39]        :                                       ;eoc - is used as nmi - ip value points to ad_isr and cs value will
+[  40]        :                                       ;remain at 0000
+[  41]    0008: F7 04                                 dw      ad_isr
+[  42]    000A: 00 00                                 dw      0000
+[  43]        :                                       ;int 3 to int 255 unused so ip and cs intialized to 0000
+[  44]        :                                       ;from 3x4 = 0000cH		
+[  45]    000C: 00 00 00 00 00 00 00 00 00 00 00 00   db     1012 dup(0)
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00 00 00 00 00 00 00 00 00 
+                00 00 00 00                         
+[  46]        :                                       ;main program
+[  47]    0400:                                       IM_BUFFER       DB      40901 DUP(0)
+[  48]    0400:                                       DB      40000 DUP(0)
+[  49]    0400: 33                                    POS1                    DB      33H           ;position of stepper motor 1
+[  50]    0401: 33                                    POS2                    DB      33H           ;position of stepper motor 2
+[  51]        :                                       
+[  52]    0402: FA                                    st1:      cli
+[  53]        :                                       ; intialize ds, es,ss to start of RAM
+[  54]    0403: B8 00 02                              mov       ax,0200h
+[  55]    0406: 8E D8                                 mov       ds,ax
+[  56]    0408: 8E C0                                 mov       es,ax
+[  57]    040A: 8E D0                                 mov       ss,ax
+[  58]    040C: BC FE FF                              mov       sp,0FFFEH
+[  59]    040F: BE 00 00                              mov       si,0000
+[  60]        :                                       
+[  61]        :                                       
+[  62]        :                                       
+[  63]        :                                       ; MOV AL, 36H             ;initializing counter 0 of 8254 (not in proteus)
+[  64]        :                                       ; OUT 96H, AL
+[  65]        :                                       ; MOV AL, 0005H           ; giving a count of 5d to counter to get a 1mhz signal
+[  66]        :                                       ; OUT 90H, AL
+[  67]        :                                       ; MOV AL, 0000H
+[  68]        :                                       ; OUT 90H, AL
+[  69]        :                                       
+[  70]    0412: B0 9A                                 MOV AL,9AH         ;control word to initialize 8255A(1)
+[  71]    0414: E6 86                                 OUT 86H,AL
+[  72]        :                                       
+[  73]        :                                       
+[  74]    0416: B0 81                                 MOV AL,81H         ;control word to initialize 8255A(2)
+[  75]    0418: E6 8E                                 OUT 8EH,AL
+[  76]        :                                       
+[  77]    041A: B9 21 03                              MOV CX,801                  ; row movement counter
+[  78]    041D: BE 00 04                              MOV SI,OFFSET IM_BUFFER     ; image storage area
+[  79]        :                                       
+[  80]    0420: E4 8C                                 POLL:   IN AL, SIGNAL_ADC
+[  81]    0422: 24 01                                 AND AL, 01H
+[  82]    0424: 74 FA                                 JZ  POLL
+[  83]    0426: E8 C8 00                              CALL DEBOUNCE
+[  84]        :                                       
+[  85]        :                                       
+[  86]        :                                       
+[  87]    0429: 51                                    NEXTROW:       PUSH CX
+[  88]    042A: B2 00                                 MOV DL,0
+[  89]    042C: B9 08 00                              MOV CX,8
+[  90]    042F: BB 00 00                              MOV BX,0
+[  91]        :                                       
+[  92]        :                                       
+[  93]    0432: E8 89 00                              READAGAIN1: CALL READPIX
+[  94]    0435: A0 00 04                              MOV AL,POS1
+[  95]    0438: D0 C8                                 ROR AL,1                      ; rotates motor through one step
+[  96]    043A: E6 88                                 OUT SMOTOR1,AL
+[  97]    043C: E8 A9 00                              CALL DELAY_MOT
+[  98]    043F: A2 00 04                              MOV POS1,AL
+[  99]    0442: FE C2                                 INC DL
+[ 100]    0444: E2 EC                                 LOOP READAGAIN1
+[ 101]    0446: 43                                    	INC BX
+[ 102]        :                                       ;0.5cm of row has been read.
+[ 103]        :                                       ;Whole assembly is to be moved by 0.4125 cm to read next 5 bytes of data or 40 pixels
+[ 104]        :                                       
+[ 105]    0447: B9 21 00                              MOV CX,33               ; 0.4125/0.0125
+[ 106]    044A: A0 00 04                              MOV AL,POS1
+[ 107]    044D: 83 FB 14                              	CMP BX, 20            ;a loop of 20 to read the entire row except one last pixel
+[ 108]    0450: 74 16                                 JZ DONE
+[ 109]        :                                       
+[ 110]    0452: D0 C8                                 AGAIN1:            ROR AL,1
+[ 111]    0454: E6 88                                 OUT SMOTOR1,AL
+[ 112]    0456: E8 8F 00                              CALL DELAY_MOT
+[ 113]    0459: E2 F7                                 LOOP AGAIN1
+[ 114]        :                                       
+[ 115]    045B: A2 00 04                              MOV POS1,AL
+[ 116]        :                                       
+[ 117]        :                                       ;now the next 0.5cm of the row has to be read
+[ 118]        :                                       
+[ 119]    045E: 83 C6 05                              ADD SI,5
+[ 120]    0461: B2 00                                 MOV DL,0
+[ 121]    0463: B9 08 00                              MOV CX,8
+[ 122]    0466: EB CA                                 	JMP READAGAIN1
+[ 123]        :                                       
+[ 124]    0468:                                       DONE:
+[ 125]        :                                       
+[ 126]        :                                       ;Whole row has been read
+[ 127]        :                                       ;Only the last pixel is to be read
+[ 128]        :                                       ;reading the last pixel
+[ 129]        :                                       
+[ 130]    0468: A0 00 04                              MOV AL,POS1
+[ 131]    046B: D0 C8                                 ROR AL,1
+[ 132]    046D: E6 88                                 OUT SMOTOR1,AL
+[ 133]    046F: E8 76 00                              CALL DELAY_MOT
+[ 134]    0472: A2 00 04                              MOV POS1,AL
+[ 135]        :                                       
+[ 136]    0475: BF 01 00                              MOV DI, 1                        ;Checking if NMI is there
+[ 137]        :                                       
+[ 138]    0478: B0 90                                 MOV AL,90H                  ;enable ALE(ALE = 1)
+[ 139]    047A: E6 8C                                 OUT SIGNAL_ADC,AL
+[ 140]        :                                       
+[ 141]    047C: B0 04                                 MOV AL,04H                  ;enable the last photodiode
+[ 142]    047E: E6 84                                 OUT MUX_ADC,AL
+[ 143]        :                                       
+[ 144]    0480: B0 50                                 MOV AL,50H                  ;start pulse
+[ 145]    0482: E6 8C                                 OUT SIGNAL_ADC,AL
+[ 146]        :                                       
+[ 147]        :                                       ;provide a delay of 2 microsecs to the start signal
+[ 148]        :                                       
+[ 149]    0484: 90                                    NOP
+[ 150]    0485: 90                                    NOP
+[ 151]    0486: 90                                    NOP
+[ 152]    0487: 90                                    NOP
+[ 153]        :                                       
+[ 154]    0488: B0 10                                 MOV AL,10h
+[ 155]    048A: E6 8C                                 OUT SIGNAL_ADC,AL
+[ 156]        :                                       
+[ 157]    048C: 83 FF 00                              x2: CMP DI, 0
+[ 158]    048F: 75 FB                                 JNZ x2                          ;wait for interrupt
+[ 159]        :                                       
+[ 160]        :                                       
+[ 161]        :                                       
+[ 162]    0491: B9 F8 02                              MOV CX,760            ;bring the horizontal motor back to starting position
+[ 163]    0494: A0 00 04                              MOV AL,POS1
+[ 164]    0497: D0 C0                                 AGAIN2:            ROL AL,1
+[ 165]    0499: E6 88                                 OUT SMOTOR1,AL
+[ 166]    049B: E8 4A 00                              CALL DELAY_MOT
+[ 167]    049E: E2 F7                                 LOOP AGAIN2
+[ 168]    04A0: A2 00 04                              MOV POS1,AL
+[ 169]        :                                       
+[ 170]    04A3: A0 01 04                              MOV AL,POS2                         ;move verticle motor downwards by 1 step
+[ 171]    04A6: D0 C8                                 ROR AL,1
+[ 172]    04A8: E6 8A                                 OUT SMOTOR2,AL
+[ 173]        :                                       
+[ 174]    04AA: E8 3B 00                              CALL DELAY_MOT
+[ 175]    04AD: A2 01 04                              MOV POS2,AL                  ;updating position of vertical motor
+[ 176]    04B0: 83 C6 06                              ADD SI,6
+[ 177]    04B3: 59                                    POP CX
+[ 178]    04B4: 49 E3 03 E9 6F FF                     LOOP NEXTROW                    ; start the program to read the next row
+[ 179]        :                                       
+[ 180]    04BA: B0 00                                 MOV AL, 00H
+[ 181]    04BC: E6 8C                                 OUT SIGNAL_ADC, AL                  ; LIGHTING THE LED FOR DENOTING COMPLETION OF SCAN
+[ 182]        :                                       
+[ 183]        :                                       
+[ 184]        :                                       
+[ 185]    04BE:                                       READPIX     PROC     NEAR
+[ 186]        :                                       
+[ 187]        :                                       ;takes SI and DL as arguments
+[ 188]    04BE: 53                                    PUSH BX
+[ 189]    04BF: 51                                    PUSH CX
+[ 190]    04C0: BF 01 00                              MOV DI, 1               ; for checking if NMI is there
+[ 191]    04C3: BB 00 00                              MOV BX,0
+[ 192]        :                                       
+[ 193]        :                                       ;BX holds the diode being selected currently through the selection pins of ADC
+[ 194]        :                                       
+[ 195]    04C6: B9 05 00                              MOV CX,5
+[ 196]        :                                       
+[ 197]    04C9: B0 90                                 NEXTBYTE:   MOV AL,90H           ; enable ALE
+[ 198]    04CB: E6 8C                                 OUT SIGNAL_ADC,AL
+[ 199]        :                                       
+[ 200]    04CD: 8A C3                                 MOV AL,BL                    ;select diode using BX
+[ 201]    04CF: E6 84                                 OUT MUX_ADC,AL
+[ 202]        :                                       
+[ 203]    04D1: B0 50                                 MOV AL,50H
+[ 204]    04D3: E6 8C                                 OUT SIGNAL_ADC,AL ;start pulse
+[ 205]        :                                       
+[ 206]        :                                       ; delay of 2 microsecs
+[ 207]    04D5: 90                                    NOP
+[ 208]    04D6: 90                                    NOP
+[ 209]    04D7: 90                                    NOP
+[ 210]    04D8: 90                                    NOP
+[ 211]        :                                       
+[ 212]        :                                       
+[ 213]    04D9: B0 10                                 MOV AL,10h
+[ 214]    04DB: E6 8C                                 OUT SIGNAL_ADC,AL  ;make pulse 0
+[ 215]        :                                       
+[ 216]    04DD: 83 FF 00                              x1: CMP DI, 0
+[ 217]    04E0: 75 FB                                 JNZ x1                          ;wait for interrupt
+[ 218]        :                                       
+[ 219]    04E2: 43                                    FORWARD:    INC BX                  ; next photodiode
+[ 220]    04E3: E2 E4                                 LOOP NEXTBYTE
+[ 221]    04E5: 59                                    POP CX
+[ 222]    04E6: 5B                                    POP BX
+[ 223]    04E7: C3                                    RET
+[ 224]        :                                       
+[ 225]        :                                       READPIX     ENDP
+[ 226]        :                                       
+[ 227]        :                                       
+[ 228]    04E8:                                       DELAY_MOT    PROC    NEAR
+[ 229]        :                                       
+[ 230]        :                                       ;procedure to provide 1 ms delay for movement of motor
+[ 231]        :                                       
+[ 232]    04E8: 51                                    PUSH CX
+[ 233]    04E9: B9 F5 01                              MOV CX,501
+[ 234]        :                                       
+[ 235]    04EC: 90                                    X7:                    NOP
+[ 236]    04ED: E2 FD                                 LOOP X7
+[ 237]    04EF: 59                                    POP CX
+[ 238]    04F0: C3                                    RET
+[ 239]        :                                       
+[ 240]        :                                       DELAY_MOT   ENDP
+[ 241]        :                                       
+[ 242]        :                                       ;Procedure for debounce delay
+[ 243]    04F1:                                       DEBOUNCE proc near
+[ 244]        :                                       
+[ 245]        :                                       ;delay calculation
+[ 246]        :                                       ;no. of cycles for loop = 18 if taken/ 5 if not taken = 14,999 x 18 + 5
+[ 247]        :                                       ;no. of cycles for ret 16
+[ 248]        :                                       ;no. of cycles for call 19
+[ 249]        :                                       ;no. of cycles for mov 4
+[ 250]        :                                       ;clock speed 1 MHz - 1 clock cycle 1us (micro seconds)
+[ 251]        :                                       ;total no.cycles delay = clkcycles for call + mov cx,imm + (content of cx-1)*18+5 + ret= (19 + 4 + (18*14,999) + 5 + 16)* 1 us = 0.270026s
+[ 252]        :                                       ;adjusted for proteus, due to CPU load
+[ 253]        :                                       
+[ 254]    04F1: B9 98 3A                              mov     cx,15000
+[ 255]    04F4: E2 FE                                 debloop1: loop  debloop1
+[ 256]        :                                       
+[ 257]        :                                       	
+[ 258]    04F6: C3                                    ret
+[ 259]        :                                       DEBOUNCE endp
+[ 260]        :                                       
+[ 261]    04F7:                                       ad_isr:
+[ 262]    04F7: 4F                                    DEC di
+[ 263]    04F8: 83 FB 14                              CMP BX, 20                  ; checking if its the end of row and we want read the last pixel only or not
+[ 264]    04FB: 75 10                                 JNZ REGULAR                 ; if no then we go to our regular sampling of all 5 diodes.
+[ 265]    04FD: B0 30                                 MOV AL,30H                 ;output enable = 1
+[ 266]    04FF: E6 8C                                 OUT SIGNAL_ADC,AL
+[ 267]    0501: E4 80                                 IN AL,ADCD                    ;AL contains output of ADC now
+[ 268]    0503: 3C 00                                 CMP AL,00H                      ; checking if value is 0, if yes then skip the pixel(as already initialized 0)
+[ 269]    0505: 74 1A                                 JZ S1
+[ 270]    0507: 80 4C 05 80                           OR [SI+5],80H                   ;else load 1 in the 5th photodiode's location
+[ 271]    050B: 74 14                                 JZ S1
+[ 272]    050D:                                       REGULAR:
+[ 273]    050D: B0 30                                 MOV AL,30H
+[ 274]    050F: E6 8C                                 OUT SIGNAL_ADC,AL   ;OE = 1
+[ 275]    0511: E4 80                                 IN AL,ADCD                      ;AL contains ADC output now
+[ 276]        :                                       
+[ 277]    0513: 3C 00                                 CMP AL,00H                  ; checking if value is 0, if yes then skip the pixel(as already initialized 0)
+[ 278]    0515: 74 0A                                 JZ S1
+[ 279]    0517: B0 80                                 MOV AL,80H
+[ 280]    0519: 51                                    PUSH CX
+[ 281]    051A: 8A CA                                 MOV CL,DL
+[ 282]    051C: D2 E8                                 SHR AL,CL                      ; shifting the 1 to the bit corresponding to which pixel is currently read in 0.1cm (as o.1cm contaisn 8 pixels)
+[ 283]    051E: 59                                    POP CX
+[ 284]    051F: 08 00                                 OR [BX+SI],AL                 ;stores in memory (making the corresponding bit 1 for detection of pixel)
+[ 285]    0521:                                       S1:
+[ 286]    0521: CF                                    IRET
+[ 287]        :                                       
+[ 288]        :                                       
+[ 289]        :                                       
+[ 290]        :                                       
+[ 291]        :                                       
+[ 292]        :                                       
+[ 293]        :                                       
+[ 294]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

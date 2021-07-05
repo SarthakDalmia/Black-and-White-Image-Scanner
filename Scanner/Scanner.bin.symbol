@@ -1,0 +1,30 @@
+< THE SYMBOL TABLE >  Scanner.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+IM_BUFFER                	00400     	1         	VAR       	(NOSEG)   
+POS1                     	00400     	1         	VAR       	(NOSEG)   
+POS2                     	00401     	1         	VAR       	(NOSEG)   
+ST1                      	00402     	-1        	LABEL     	(NOSEG)   
+POLL                     	00420     	-1        	LABEL     	(NOSEG)   
+NEXTROW                  	00429     	-1        	LABEL     	(NOSEG)   
+READAGAIN1               	00432     	-1        	LABEL     	(NOSEG)   
+AGAIN1                   	00452     	-1        	LABEL     	(NOSEG)   
+DONE                     	00468     	-1        	LABEL     	(NOSEG)   
+X2                       	0048C     	-1        	LABEL     	(NOSEG)   
+AGAIN2                   	00497     	-1        	LABEL     	(NOSEG)   
+READPIX                  	004BE     	-1        	NEAR      	(NOSEG)   
+NEXTBYTE                 	004C9     	-1        	LABEL     	(NOSEG)   
+X1                       	004DD     	-1        	LABEL     	(NOSEG)   
+FORWARD                  	004E2     	-1        	LABEL     	(NOSEG)   
+DELAY_MOT                	004E8     	-1        	NEAR      	(NOSEG)   
+X7                       	004EC     	-1        	LABEL     	(NOSEG)   
+DEBOUNCE                 	004F1     	-1        	NEAR      	(NOSEG)   
+DEBLOOP1                 	004F4     	-1        	LABEL     	(NOSEG)   
+AD_ISR                   	004F7     	-1        	LABEL     	(NOSEG)   
+REGULAR                  	0050D     	-1        	LABEL     	(NOSEG)   
+S1                       	00521     	-1        	LABEL     	(NOSEG)   
+===================================================================================================
+[ 4/18/2021  --  3:59:50 PM ] 
+< END >
+ 
